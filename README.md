@@ -1,5 +1,5 @@
 # Dont-Blink
- Portfolio Website
+ Terminal - Portfolio Website
 
 ## License
 - Code: MIT License
