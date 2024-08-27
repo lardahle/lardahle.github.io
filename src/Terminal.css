@@ -1,56 +1,80 @@
 /* src/Terminal.css */
-body {
-    background-color: #000; /* Terminal background color */
-    color: #ffffff;         /* Terminal text color */
-    font-family: 'Courier New', Courier, monospace; /* Terminal-like font */
-    margin: 0;
-    padding: 0;
-}
-
+/* Container around the terminal */
 .terminal-wrapper {
-    padding: 2vh; /* General padding around the terminal */
+    padding: 2vh; /* Add vertical padding around the terminal for spacing */
 }
 
+/* Terminal window styling */
 .terminal {
-    padding: 20px;
-    width: 80%;
-    max-width: 1000px;
-    margin: auto;
-    border: 2px solid #ffffff; /* Terminal border color */
-    border-radius: 5px;
-    background-color: #111; /* Slightly lighter background for terminal window */
-    height: 85vh;           /* Most of viewport height */
-    overflow-y: auto;       /* Scrollable content */
+    padding: 20px;            /* Internal padding to create space inside the terminal */
+    width: 80%;               /* Set terminal width to 80% of the viewport width */
+    max-width: 1000px;        /* Maximum width constraint for larger screens */
+    margin: auto;             /* Center the terminal horizontally */
+    border: 2px solid #ffffff; /* White border to define the terminal window */
+    border-radius: 5px;       /* Rounded corners for a softer look */
+    background-color: #021f06;   /* Slightly lighter background for contrast with the body */
+    height: 85vh;             /* Height of the terminal set to 85% of the viewport height */
+    overflow-y: auto;         /* Enable vertical scrolling if content overflows */
 }
 
+/* Input field container styling */
 .input-wrapper {
-    display: flex;
-    align-items: center;   /* Align items vertically centered */
+    display: flex;            /* Use flexbox for alignment */
+    align-items: center;      /* Center items vertically */
 }
 
-.input-line, .output-line {
-    display: flex;
-    flex-direction: column;
+/* Styles for individual lines of input/output */
+.input-line {
+    display: flex;            /* Arrange items in a row */
+    flex-direction: center;   /* Stack prompt, command, and output vertically */
+}
+.output-line {
+    display: flex;            /* Arrange items in a row */
+    flex-direction: column;   /* Stack prompt, command, and output vertically */
 }
 
+/* Starter text styling */
+.ASCII-art {
+    color: #A3BBAD;           /* Green color for starter text to mimic terminal output */
+    /*font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
+    font-size: xx-small;
+    white-space: pre-wrap;    /* Preserve whitespace and line breaks */
+    margin-bottom: 10px;      /* Space below starter text */
+    margin-left: 15%;
+}
+
+/* Starter text styling */
+.starter-text {
+    color: #A3BBAD;           /* Green color for starter text to mimic terminal output */
+    /*font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
+    white-space: pre-wrap;    /* Preserve whitespace and line breaks */
+    margin-bottom: 10px;      /* Space below starter text */
+    margin-left: 2%;
+}
+
+
+/* Prompt styling */
 .prompt {
-    color: #ffffff;         /* Prompt color */
+    color: #ffffff;           /* Prompt text color */
 }
 
+/* Input field styling */
 .input {
-    flex: 1;
-    border: none;
-    background: none;
-    color: #ffffff;
-    outline: none;
-    font-family: 'Courier New', Courier, monospace;
+    flex: 1;                  /* Allow input to take up available space */
+    border: none;             /* Remove default border */
+    background: none;         /* No background to match terminal appearance */
+    color: #ffffff;           /* Input text color */
+    outline: none;            /* Remove outline for a cleaner look */
+    font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
 }
 
+/* Command text styling */
 .command {
-    color: #ffffff; /* Command color */
+    color: #ffffff;           /* Command text color */
 }
 
+/* Output text styling */
 .output {
-    color: #00ff00; /* Output color */
-    white-space: pre-wrap; /* Preserve whitespace formatting */
+    color: #A3BBAD;           /* Alt color for output text to mimic terminal output */
+    white-space: pre-wrap;    /* Preserve whitespace formatting */
 }
