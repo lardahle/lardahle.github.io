@@ -6,7 +6,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Terminal />
+      <div className="terminal-wrapper">
+        <Terminal />
+      </div>
     </div>
   );
 }

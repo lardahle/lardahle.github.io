@@ -5,9 +5,13 @@ body {
     font-family: 'Courier New', Courier, monospace; /* Terminal-like font */
     margin: 0;
     padding: 0;
-  }
-  
-  .terminal {
+}
+
+.terminal-wrapper {
+    padding: 2vh; /* General padding around the terminal */
+}
+
+.terminal {
     padding: 20px;
     width: 80%;
     max-width: 1000px;
@@ -15,24 +19,38 @@ body {
     border: 2px solid #ffffff; /* Terminal border color */
     border-radius: 5px;
     background-color: #111; /* Slightly lighter background for terminal window */
-    height: 90vh;           /* Full viewport height */
+    height: 85vh;           /* Most of viewport height */
     overflow-y: auto;       /* Scrollable content */
-  }
-  
-  .input-line {
+}
+
+.input-wrapper {
     display: flex;
-  }
-  
-  .prompt {
+    align-items: center;   /* Align items vertically centered */
+}
+
+.input-line, .output-line {
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt {
     color: #ffffff;         /* Prompt color */
-  }
-  
-  .input {
+}
+
+.input {
     flex: 1;
     border: none;
     background: none;
     color: #ffffff;
     outline: none;
     font-family: 'Courier New', Courier, monospace;
-  }
-  
+}
+
+.command {
+    color: #ffffff; /* Command color */
+}
+
+.output {
+    color: #00ff00; /* Output color */
+    white-space: pre-wrap; /* Preserve whitespace formatting */
+}
