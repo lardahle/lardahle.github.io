@@ -34,13 +34,38 @@
 }
 
 /* Starter text styling */
+
+.ASCII-wrapper {
+    display: flex;            /* Use flexbox for alignment */
+    align-items: center;      /* Center items vertically */
+    margin: auto;             /* Center the terminal horizontally */
+}
+
 .ASCII-art {
+    color: #A3BBAD;           /* Green color for starter text to mimic terminal output */
+    /*font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
+    font-size: 25%;
+    white-space: pre-wrap;    /* Preserve whitespace and line breaks */
+    margin-bottom: 10px;      /* Space below starter text */
+    display: flex;            /* Arrange items in a row */
+    /*margin-left: 15%*/;
+}
+
+.ASCII-text-wrapper {
+    display: block;            /* Use flexbox for alignment */
+    margin: auto;             /* Center the terminal horizontally */
+    /*align-items: center;*/      /* stack items vertically */
+}
+
+/* Starter text styling */
+.ASCII-text {
     color: #A3BBAD;           /* Green color for starter text to mimic terminal output */
     /*font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
     font-size: xx-small;
     white-space: pre-wrap;    /* Preserve whitespace and line breaks */
     margin-bottom: 10px;      /* Space below starter text */
-    margin-left: 15%;
+    display: block;            /* Arrange items in a row */
+
 }
 
 /* Starter text styling */
