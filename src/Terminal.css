@@ -42,7 +42,7 @@
 }
 
 .ASCII-art {
-    color: #A3BBAD;           /* Green color for starter text to mimic terminal output */
+    color: #ffffff;           /* Green color for starter text to mimic terminal output */
     /*font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
     font-size: 25%;
     white-space: pre-wrap;    /* Preserve whitespace and line breaks */
@@ -74,13 +74,24 @@
     /*font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
     white-space: pre-wrap;    /* Preserve whitespace and line breaks */
     margin-bottom: 10px;      /* Space below starter text */
-    margin-left: 2%;
+    /* margin-left: 2%; */
 }
 
+.starter-text-highlight {
+    color: #d70400;           /* Green color for starter text to mimic terminal output */
+    /*font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
+    white-space: pre-wrap;    /* Preserve whitespace and line breaks */
+    margin-bottom: 10px;      /* Space below starter text */
+    font-weight: bold;
+    /* margin-left: 2%; */
+}
 
 /* Prompt styling */
 .prompt {
     color: #ffffff;           /* Prompt text color */
+    display: flex;            /* Arrange items in a row */
+    flex-direction: center;   /* Stack prompt, command, and output vertically */
+    white-space: pre-wrap;    /* Preserve whitespace and line breaks */
 }
 
 /* Input field styling */
@@ -91,15 +102,20 @@
     color: #ffffff;           /* Input text color */
     outline: none;            /* Remove outline for a cleaner look */
     font-family: 'Courier New', Courier, monospace; /* Use a monospaced font */
+    font-size: medium;
+    /* margin-left: 0.75%; */
 }
 
 /* Command text styling */
 .command {
     color: #ffffff;           /* Command text color */
+    display: flex;            /* Arrange items in a row */
+    flex-direction: center;   /* Stack prompt, command, and output vertically */
 }
 
 /* Output text styling */
 .output {
     color: #A3BBAD;           /* Alt color for output text to mimic terminal output */
     white-space: pre-wrap;    /* Preserve whitespace formatting */
+    margin-bottom: 10px;      /* Space below starter text */
 }

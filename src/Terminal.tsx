@@ -14,6 +14,27 @@ const Terminal: React.FC = () => {
         terminalRef.current?.scrollTo(0, terminalRef.current.scrollHeight);
     }, [history]);
 
+    const commands = ['help', 'about', 'clear', 'ls', 'cd'];
+
+    const autocomplete = (input: string) => {
+        const trimmedInput = input.trim().toLowerCase();
+
+        if (trimmedInput.startsWith('cd ')) {
+            const subdomainInput = trimmedInput.slice(3); // Get the part after 'cd '
+            const match = subdomains.find(sub => sub.name.startsWith(subdomainInput));
+            if (match) {
+                return `cd ${match.name}`; // Autocomplete the subdomain name
+            }
+        } else {
+            const match = commands.find(cmd => cmd.startsWith(trimmedInput));
+            if (match) {
+                return match; // Autocomplete the command
+            }
+        }
+
+        return input; // Return the original input if no match is found
+    };
+
     // Handle changes to the input field
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value);
@@ -44,29 +65,55 @@ const Terminal: React.FC = () => {
                     setHistoryIndex(null); // Reset history index
                 }
                 break;
+            case 'Tab':
+                e.preventDefault(); // Prevent default tab behavior
+                setInput(autocomplete(input));
+                break;
         }
     };
 
-    // Process and handle commands
+    const subdomains = [
+        { name: 'photography', url: 'https://lardahle.github.io/photography' },
+        { name: 'music', url: 'https://lardahle.github.io/music' },
+        { name: 'design', url: 'https://lardahle.github.io/design' },
+        // Add more subdomains as needed
+    ];
+    
+
     const processCommand = (command: string) => {
         let output = '';
-
+    
+        const trimmedCommand = command.trim().toLowerCase();
+    
         // Command processing logic
-        switch (command.trim().toLowerCase()) {
-            case 'help':
-                output = 'Available commands: help, about, clear'; // Help command
-                break;
-            case 'about':
-                output = 'Terminal interface created with React.'; // About command
-                break;
-            case 'clear':
-                setHistory([]); // Clear command history
-                return; // Exit early to avoid adding the clear command to history
-            default:
-                output = `Command not found: ${command}`; // Default message for unknown commands
-                break;
+        if (trimmedCommand === 'ls') {
+            output = subdomains.map(sub => sub.name).join('  '); // List subdomains
+        } else if (trimmedCommand.startsWith('cd ')) {
+            const target = trimmedCommand.slice(3); // Extract the target subdomain
+            const subdomain = subdomains.find(sub => sub.name === target);
+    
+            if (subdomain) {
+                output = `Switching to ${target}...`;
+                window.location.href = subdomain.url; // Redirect to the subdomain
+            } else {
+                output = `No such directory: ${target}`;
+            }
+        } else if (trimmedCommand === 'help') {
+            output = `The goal of this site was to mimic a terminal interface, so the following commands are available for you to use!\n
+        help : for if you ever get confused and want a quick reference\n
+        about : project explanation\n
+        clear : reset your terminal\n
+        ls : list directories (sub-pages)\n
+        cd [subdomain] : change directory (switch to sub-page)\n`;
+        } else if (trimmedCommand === 'about') {
+            output = 'Terminal interface created with React.';
+        } else if (trimmedCommand === 'clear') {
+            setHistory([]); // Clear command history
+            return; // Exit early to avoid adding the clear command to history
+        } else {
+            output = `Command not found: ${command}`;
         }
-
+    
         setHistory([...history, { command, output }]); // Add command and output to history
     };
 
@@ -211,19 +258,25 @@ const Terminal: React.FC = () => {
                 </div>
                 </div>
 
-
+                <div className="starter-text">
+                    Howdy! Landon here, so you've found my portfolio gh-page! Outside of my 
+                    more professional content I am super into digital art; 
+                    photography, photo manipulation, music production, graphic design, etc.
+                    This page will be my home base for posting my projects with some big
+                    plans ahead so stay tuned! To get started type <span className="starter-text-highlight">help</span>.
+                </div>
 
                 {/* Render command history */}
                 {history.map((entry, index) => (
                     <div key={index} className="output-line">
-                        <span className="prompt">visitor:~$</span>
-                        <span className="command">{entry.command}</span>
+                        <span className="prompt">visitor:~$ {entry.command}</span> 
+                        {/* <span className="command">{entry.command}</span> */}
                         <div className="output">{entry.output}</div>
                     </div>
                 ))}
                 {/* Render input line */}
                 <div className="input-line">
-                    <span className="prompt">visitor:~$</span>
+                    <span className="prompt">visitor:~$ </span>
                     <input
                         className="input"
                         type="text"

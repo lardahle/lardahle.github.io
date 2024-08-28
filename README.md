@@ -32,7 +32,7 @@ commands are available for you to use!
     - [ ]  Launch GUI button
         - [ ]  Pulls up to basic homepage?
     - [ ]  Functional commands
-        - [ ]  ls & cd currently non-functional
+        - [x]  ls & cd now functional but need redirects
         - [ ]  Search function with tagged files
             - [ ]  In browser Pop-up of file explorer UI
 - [ ]  photography
