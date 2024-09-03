@@ -73,9 +73,14 @@ const Terminal: React.FC = () => {
     };
 
     const subdomains = [
-        { name: 'photography', url: 'https://lardahle.github.io/photography' },
-        { name: 'music', url: 'https://lardahle.github.io/music' },
-        { name: 'design', url: 'https://lardahle.github.io/design' },
+        //{ name: 'photography', url: 'https://lardahle.github.io/photography' },
+        //{ name: 'music', url: 'https://lardahle.github.io/music' },
+        //{ name: 'design', url: 'https://lardahle.github.io/design' },
+        { name: 'linkedin', url: 'https://www.linkedin.com/in/landon-dahle/' },
+        { name: 'instagram', url: 'https://www.instagram.com/hopefullyabysmal/' },
+        { name: 'contact', url: 'https://mail.google.com/mail/u/0/landondahle@gmail.com&tf=cm' },
+        { name: 'github', url: 'https://github.com/lardahle' },
+        { name: 'repo', url: 'https://github.com/lardahle/lardahle.github.io' },
         // Add more subdomains as needed
     ];
     
@@ -87,7 +92,12 @@ const Terminal: React.FC = () => {
     
         // Command processing logic
         if (trimmedCommand === 'ls') {
-            output = subdomains.map(sub => sub.name).join('  '); // List subdomains
+            output = subdomains
+                .map(sub => {
+                    const paddedName = sub.name.padEnd(20, ' '); // Pad subdomain names to a fixed width
+                    return `${paddedName}`;
+                })
+                .join('\n'); // Separate each subdomain by a new line for better readability
         } else if (trimmedCommand.startsWith('cd ')) {
             const target = trimmedCommand.slice(3); // Extract the target subdomain
             const subdomain = subdomains.find(sub => sub.name === target);
