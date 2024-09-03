@@ -8,11 +8,30 @@ const Terminal: React.FC = () => {
     const [history, setHistory] = useState<{ command: string, output: string }[]>([]);
     const [historyIndex, setHistoryIndex] = useState<number | null>(null); // Index for command history navigation
     const terminalRef = useRef<HTMLDivElement>(null); // Ref to access terminal DOM element
+    const inputRef = useRef<HTMLInputElement>(null);
 
     // Scroll to the bottom of the terminal whenever the history updates
     useEffect(() => {
         terminalRef.current?.scrollTo(0, terminalRef.current.scrollHeight);
     }, [history]);
+
+    // Focus the input when it loses focus
+    useEffect(() => {
+        const handleFocus = () => {
+            inputRef.current?.focus();
+        };
+
+        const inputElement = inputRef.current;
+        if (inputElement) {
+            inputElement.addEventListener('blur', handleFocus);
+        }
+
+        return () => {
+            if (inputElement) {
+                inputElement.removeEventListener('blur', handleFocus);
+            }
+        };
+    }, []);
 
     const commands = ['help', 'about', 'clear', 'ls', 'cd'];
 
@@ -273,7 +292,7 @@ const Terminal: React.FC = () => {
                     more professional content I am super into digital art; 
                     photography, photo manipulation, music production, graphic design, etc.
                     This page will be my home base for posting my projects with some big
-                    plans ahead so stay tuned! To get started type <span className="starter-text-highlight">help</span>.
+                    plans ahead so stay tuned! To get started type <span className="starter-text-highlight">help</span> then press <span className="starter-text-highlight">ENTER</span>.
                 </div>
 
                 {/* Render command history */}
@@ -294,6 +313,7 @@ const Terminal: React.FC = () => {
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
                         autoFocus // Auto-focus on the input field when the component mounts
+                        ref={inputRef} // Reference to the input element
                         aria-label="Command input" // Accessibility label for the input field
                     />
                 </div>
