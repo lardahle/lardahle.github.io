@@ -2,6 +2,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Terminal.css';
 
+const subdomains = [
+    { name: 'github', url: 'https://github.com/lardahle' },
+    { name: 'repo', url: 'https://github.com/lardahle/lardahle.github.io' },
+    //{ name: 'photography', url: 'https://lardahle.github.io/photography' },
+    //{ name: 'music', url: 'https://lardahle.github.io/music' },
+    //{ name: 'design', url: 'https://lardahle.github.io/design' },
+    { name: 'linkedin', url: 'https://www.linkedin.com/in/landon-dahle/' },
+    { name: 'instagram', url: 'https://www.instagram.com/hopefullyabysmal/' },
+    { name: 'youtube', url: 'https://www.youtube.com/@HopefullyAbysmal' },
+    { name: 'contact', url: 'https://mail.google.com/mail/u/0/landondahle@gmail.com&tf=cm' },
+
+    // Add more subdomains as needed
+];
+
 const Terminal: React.FC = () => {
     // State to manage the current input and command history
     const [input, setInput] = useState<string>('');
@@ -90,19 +104,6 @@ const Terminal: React.FC = () => {
                 break;
         }
     };
-
-    const subdomains = [
-        //{ name: 'photography', url: 'https://lardahle.github.io/photography' },
-        //{ name: 'music', url: 'https://lardahle.github.io/music' },
-        //{ name: 'design', url: 'https://lardahle.github.io/design' },
-        { name: 'linkedin', url: 'https://www.linkedin.com/in/landon-dahle/' },
-        { name: 'instagram', url: 'https://www.instagram.com/hopefullyabysmal/' },
-        { name: 'contact', url: 'https://mail.google.com/mail/u/0/landondahle@gmail.com&tf=cm' },
-        { name: 'github', url: 'https://github.com/lardahle' },
-        { name: 'repo', url: 'https://github.com/lardahle/lardahle.github.io' },
-        // Add more subdomains as needed
-    ];
-    
 
     const processCommand = (command: string) => {
         let output = '';
