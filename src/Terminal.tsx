@@ -104,7 +104,7 @@ const Terminal: React.FC = () => {
                 break;
         }
     };
-
+    
     const processCommand = (command: string) => {
         let output = '';
     
