@@ -6,11 +6,14 @@ import './App.css';
 
 function App() {
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 950);
+  const [isTablet, setIsTablet] = useState<boolean>(window.innerWidth >= 600 && window.innerWidth < 950);
 
   // Update the isMobile state on window resize
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 950);
+      const width = window.innerWidth;
+      setIsMobile(width < 950);
+      setIsTablet(width >= 600 && width < 950);
     };
 
     window.addEventListener('resize', handleResize);

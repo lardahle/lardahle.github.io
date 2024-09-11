@@ -51,6 +51,12 @@
     /*margin-left: 15%*/;
 }
 
+@media (max-width: 1200px) {
+    .ASCII-art {
+        font-size: 3px;
+    }    
+  }
+
 .ASCII-text-wrapper {
     display: block;            /* Use flexbox for alignment */
     margin: auto;             /* Center the terminal horizontally */
