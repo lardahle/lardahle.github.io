@@ -17,7 +17,7 @@
     text-align: center;
     text-decoration: none; /* Remove link underline */
     background-color: #021f06; /* Background color */
-    padding: 20px;
+    padding: 10px;
     border: 2px solid #ffffff;
     border-radius: 5px;
     color: #ffffff; /* Text color */
@@ -31,7 +31,7 @@
 /* ASCII art styling */
 .folder-icon {
     font-family: 'Courier New', Courier, monospace; /* Monospaced font */
-    font-size: 16px;
+    font-size: 2px;
     color: #ffffff;
     margin-bottom: 10px;
     white-space: pre;
@@ -39,7 +39,7 @@
 
 /* Folder name styling */
 .folder-name {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /* Responsive breakpoints */
@@ -51,6 +51,9 @@
 
 @media (max-width: 600px) {
     .folder {
-        width: 45%; /* 2 folders per row on phone */
+        width: 30%; /* 2 folders per row on phone */
+    }
+    .folder-icon {
+        font-size: 1px;
     }
 }
